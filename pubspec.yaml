@@ -78,6 +78,10 @@ flutter:
     - family: HomeFilled
       fonts:
         - asset: assets/fonts/HomeFilled.ttf
+
+    - family: CustomIcons
+      fonts:
+        - asset: assets/fonts/CustomIcons.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

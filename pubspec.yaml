@@ -57,6 +57,23 @@ flutter:
    - assets/images/photo_camera.svg
    - assets/images/search_fill.svg
    - assets/images/search_lineal.svg
+   - assets/images/child.jpg
+   - assets/images/child1.jpg
+   - assets/images/child2.jpg
+   - assets/images/child3.jpg
+   - assets/images/child4.jpeg
+   
+   - assets/images/man.jpg
+   - assets/images/man1.jpg
+   - assets/images/man2.jpg
+   - assets/images/man3.jpeg
+   - assets/images/man5.jpg
+   - assets/images/model.jpg
+   - assets/images/model1.jpg
+   - assets/images/model2.jpg
+   - assets/images/model3.jpg
+   - assets/images/model4.jpg
+   - assets/images/model5.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -74,10 +91,6 @@ flutter:
       fonts:
         - asset: assets/fonts/Billabong.ttf
           style: italic
-          
-    - family: HomeFilled
-      fonts:
-        - asset: assets/fonts/HomeFilled.ttf
 
     - family: CustomIcons
       fonts:

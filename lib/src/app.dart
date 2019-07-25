@@ -7,7 +7,6 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        backgroundColor: Colors.grey,
         primaryColor: Colors.white,
       ),
       // onGenerateRoute: appRoutes.routes,

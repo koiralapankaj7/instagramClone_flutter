@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildAppBar(context),
       body: buildBody(),
       bottomNavigationBar: buildBottomNavigationBar(),
@@ -80,7 +81,19 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildBody() {
-    return Column();
+    return RefreshIndicator(
+      child: ListView.builder(
+        itemCount: 50,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            margin: EdgeInsets.only(top: 4.0),
+            height: 40.0,
+            color: Colors.amber,
+          );
+        },
+      ),
+      onRefresh: () async {},
+    );
   }
 
   Widget buildBottomNavigationBar() {
@@ -126,7 +139,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return BottomNavigationBar(
       items: items,
-      elevation: 20.0,
       onTap: (index) {
         setState(() {
           currentIndex = index;
@@ -135,10 +147,13 @@ class _HomeScreenState extends State<HomeScreen> {
       currentIndex: currentIndex,
       iconSize: 24.0,
       showSelectedLabels: false,
+      // fixedColor: Colors.black,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.black,
       selectedFontSize: 0.0,
       type: BottomNavigationBarType.fixed,
+      elevation: 18.0,
+      backgroundColor: Colors.white,
       // selectedIconTheme: IconThemeData(
       //   color: Colors.black,
       //   size: 20.0,

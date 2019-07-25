@@ -5,7 +5,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(canvasColor: Colors.transparent),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        backgroundColor: Colors.grey,
+        primaryColor: Colors.white,
+      ),
       // onGenerateRoute: appRoutes.routes,
       home: HomeScreen(),
     );

@@ -23,7 +23,10 @@ class Stories extends StatelessWidget {
       children: <Widget>[
         index == 0 ? createStory() : storyContent(index),
         Expanded(
-          child: Text(index == 0 ? 'Your Story' : 'Name'),
+          child: Text(
+            index == 0 ? 'Your Story' : UIImageData.storiesName[index],
+            style: TextStyle(color: Colors.black54),
+          ),
         ),
       ],
     );
@@ -39,7 +42,34 @@ class Stories extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage(UIImageData.storiesList[0]),
+              fit: BoxFit.cover,
+              image: AssetImage(
+                UIImageData.storiesList[0],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 4.0,
+          right: 2.0,
+          height: 28.0,
+          width: 28.0,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: Container(
+              margin: EdgeInsets.all(2.0),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 18.0,
+              ),
             ),
           ),
         ),

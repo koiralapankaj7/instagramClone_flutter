@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:insta_clone/src/utils/ui_image_data.dart';
+import 'package:insta_clone/src/widgets/circle_image.dart';
 
 class Stories extends StatelessWidget {
   @override
@@ -21,7 +21,9 @@ class Stories extends StatelessWidget {
   Widget story(int index) {
     return Column(
       children: <Widget>[
-        index == 0 ? createStory() : storyContent(index),
+        index == 0
+            ? createStory()
+            : CircleImage(UIImageData.storiesList[index]),
         Expanded(
           child: Text(
             index == 0 ? 'Your Story' : UIImageData.storiesName[index],
@@ -74,58 +76,6 @@ class Stories extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  Widget storyContent(int index) {
-    // Gradient background container
-    return Container(
-      height: 90.0,
-      width: 90.0,
-      margin: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: SweepGradient(
-          colors: [
-            Colors.cyan,
-            Colors.red,
-            Colors.amber,
-            Colors.grey,
-            Colors.green,
-          ],
-        ),
-      ),
-
-      // White background container between image and gradient
-      child: Container(
-        margin: EdgeInsets.all(3.0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-        ),
-
-        // Image container
-        child: FittedBox(
-          child: Container(
-            margin: EdgeInsets.all(4.0),
-            height: 90.0,
-            width: 90.0,
-            decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(50.0),
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                // Instgram is using BoxFit.contain but we are using cover for better look
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  UIImageData.storiesList[index],
-                ),
-              ),
-            ),
-          ),
-        ),
-        // Image container
-        //
-      ),
     );
   }
 }

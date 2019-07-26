@@ -29,10 +29,18 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   // To display like count icon below comment icon
-  int likeCount = 0;
+  int likeCount = -1;
+
+  // Post caption
+  String caption = '''Styling text in Flutter 
+      #something, #Another, #nepal,
+       #ktm, #love, #newExperiance
+       Styling text in Flutter''';
 
   Widget post(int index) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         // User profile, name and more option
         Row(
@@ -87,14 +95,25 @@ class _HomeBodyState extends State<HomeBody> {
           children: <Widget>[
             SizedBox(width: 12.0), // For padding
             Stack(
+              fit: StackFit.loose,
               textDirection: TextDirection.rtl,
               children: <Widget>[
                 // Spread elements
+                // I am using this method just for illustration purpose.
+                // This is not the best way to implement
+                // Better way would be creating list of widget and assign that list to childeren property
                 ...UIImageData.storiesList.take(3).map((image) {
+                  //likeCount++;
+                  if (likeCount == 2) {
+                    likeCount = 0;
+                  } else {
+                    likeCount++;
+                  }
+
                   return Container(
                     height: 22.0,
                     width: 22.0,
-                    margin: EdgeInsets.only(right: ++likeCount * 14.0),
+                    margin: EdgeInsets.only(right: likeCount * 14.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
@@ -111,6 +130,7 @@ class _HomeBodyState extends State<HomeBody> {
                 }),
               ],
             ),
+            SizedBox(width: 8.0), // For padding
             Expanded(
               child: RichText(
                 text: TextSpan(
@@ -139,14 +159,36 @@ class _HomeBodyState extends State<HomeBody> {
             ),
           ],
         ),
+        SizedBox(height: 8.0), // For padding
         //Caption
-        Text('data'),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Text('data'),
+        ),
+        SizedBox(height: 4.0), // For padding
         // View all comments
-        Text('data'),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Text(
+            'View all 40 comments',
+            style: TextStyle(color: Colors.black45),
+          ),
+        ),
+        SizedBox(height: 4.0), // For padding
         // Add comment section
-        Row(),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(),
+        ),
         // Uploaded time
-        Text('data'),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Text(
+            '1 hours ago',
+            style: TextStyle(color: Colors.black45),
+          ),
+        ),
+        SizedBox(height: 24.0), // For padding
       ],
     );
   }

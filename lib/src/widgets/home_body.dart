@@ -28,16 +28,15 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 
-  // To display like count icon below comment icon
-  int likeCount = -1;
-
-  // Post caption
-  String caption = '''Styling text in Flutter 
-      #something, #Another, #nepal,
-       #ktm, #love, #newExperiance
-       Styling text in Flutter''';
-
   Widget post(int index) {
+    // To display like count icon below comment icon
+    int likeCount = -1;
+
+    // Post caption
+    String caption =
+        '''Styling text in Flutter #something, Styling text in Flutter. #Another, #nepal, Styling text in Flutter. #ktm, #love, #newExperiance Styling text in Flutter. Styling text in Flutter. Styling text in Flutter.''';
+
+    _processCaption(caption, '#', null);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -62,8 +61,8 @@ class _HomeBodyState extends State<HomeBody> {
         // Single or collection of images
         Container(
           constraints: BoxConstraints(
-            maxHeight: 200.0, // changed to 400
-            minHeight: 200.0,
+            maxHeight: 150.0, // changed to 400
+            minHeight: 150.0, // changed to 200
             maxWidth: double.infinity,
             minWidth: double.infinity,
           ),
@@ -162,8 +161,28 @@ class _HomeBodyState extends State<HomeBody> {
         SizedBox(height: 8.0), // For padding
         //Caption
         Padding(
-          padding: const EdgeInsets.only(left: 12.0),
-          child: Text('data'),
+          padding: const EdgeInsets.only(left: 12.0, right: 16),
+          child: RichText(
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            text: TextSpan(
+              style: TextStyle(color: Colors.black),
+              children: [
+                TextSpan(
+                  text: '_mark_official_ ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                ..._processCaption(
+                  caption,
+                  '#',
+                  TextStyle(color: Colors.blue),
+                ),
+              ],
+            ),
+          ),
         ),
         SizedBox(height: 4.0), // For padding
         // View all comments
@@ -176,20 +195,59 @@ class _HomeBodyState extends State<HomeBody> {
         ),
         SizedBox(height: 4.0), // For padding
         // Add comment section
-        Padding(
-          padding: const EdgeInsets.only(left: 12.0),
-          child: Row(),
+        Row(
+          children: <Widget>[
+            CircleImage(
+              UIImageData.child,
+              imageSize: 30.0,
+              whiteMargin: 2.0,
+              imageMargin: 6.0,
+            ),
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Add a comment',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            Text('🤗', style: TextStyle(fontSize: 12.0)),
+            SizedBox(width: 8.0),
+            Text('😘', style: TextStyle(fontSize: 12.0)),
+            SizedBox(width: 8.0),
+            Icon(
+              Icons.add_circle_outline,
+              size: 15.0,
+              color: Colors.black26,
+            ),
+            SizedBox(width: 12.0),
+          ],
         ),
         // Uploaded time
         Padding(
           padding: const EdgeInsets.only(left: 12.0),
           child: Text(
-            '1 hours ago',
+            '1 hours ago ',
             style: TextStyle(color: Colors.black45),
           ),
         ),
         SizedBox(height: 24.0), // For padding
       ],
     );
+  }
+
+  List<TextSpan> _processCaption(
+      String caption, String matcher, TextStyle style) {
+    List<TextSpan> spans = [];
+
+    caption.split(' ').forEach((text) {
+      if (text.toString().contains(matcher)) {
+        spans.add(TextSpan(text: text + ' ', style: style));
+      } else {
+        spans.add(TextSpan(text: text + ' '));
+      }
+    });
+
+    return spans;
   }
 }

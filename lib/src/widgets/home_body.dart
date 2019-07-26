@@ -213,19 +213,22 @@ class _HomeBodyState extends State<HomeBody> {
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: 'Add a comment',
+                  hintText: 'Add a comment...',
                   border: InputBorder.none,
                 ),
               ),
             ),
-            Text('🤗', style: TextStyle(fontSize: 12.0)),
-            SizedBox(width: 8.0),
-            Text('😘', style: TextStyle(fontSize: 12.0)),
-            SizedBox(width: 8.0),
-            Icon(
-              Icons.add_circle_outline,
-              size: 15.0,
-              color: Colors.black26,
+            Text('🤗', style: TextStyle(fontSize: 14.0)),
+            SizedBox(width: 10.0),
+            Text('😘', style: TextStyle(fontSize: 14.0)),
+            SizedBox(width: 10.0),
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Icon(
+                Icons.add_circle_outline,
+                size: 15.0,
+                color: Colors.black26,
+              ),
             ),
             SizedBox(width: 12.0),
           ],

@@ -57,7 +57,7 @@ class UIImageData {
 
   static const List<String> storiesName = [
     'Your Story',
-    '_usernameone_',
+    '_username_',
     'ig_person',
     'ig_man',
     'ig_women',

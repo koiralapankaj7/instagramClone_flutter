@@ -7,6 +7,14 @@ class Stories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 140.0,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.grey[200],
+            width: 1.0,
+          ),
+        ),
+      ),
       child: ListView.builder(
         itemCount: UIImageData.storiesList.length,
         scrollDirection: Axis.horizontal,

@@ -61,13 +61,19 @@ class _HomeBodyState extends State<HomeBody> {
         // Single or collection of images
         Container(
           constraints: BoxConstraints(
-            maxHeight: 150.0, // changed to 400
-            minHeight: 150.0, // changed to 200
+            maxHeight: 400.0, // changed to 400
+            minHeight: 200.0, // changed to 200
             maxWidth: double.infinity,
             minWidth: double.infinity,
           ),
           decoration: BoxDecoration(
-            color: Colors.grey[200],
+            //color: Colors.white,
+            border: Border(
+              top: BorderSide(
+                color: Colors.grey[200],
+                width: 1.0,
+              ),
+            ),
           ),
           child: Image.asset(UIImageData.storiesList[index]),
         ),
@@ -86,6 +92,7 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             Expanded(child: SizedBox()),
             Icon(CustomIcons.bookmark_lineal),
+            SizedBox(width: 10.0), // For padding
           ],
         ),
         SizedBox(height: 10.0), // For padding

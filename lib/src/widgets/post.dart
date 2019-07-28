@@ -3,20 +3,26 @@ import 'package:insta_clone/src/customIcons/custom_icons.dart';
 import 'package:insta_clone/src/utils/ui_image_data.dart';
 import 'package:insta_clone/src/widgets/circle_image.dart';
 
-class Post extends StatelessWidget {
+class Post extends StatefulWidget {
   //
   // Instance variables
   // Post index
   final int index;
+  final List<String> galleryItems;
 
-  // To display use icons who liked the post along with like counts (below action icons)
+  Post(this.index, this.galleryItems);
+
+  @override
+  _PostState createState() => _PostState();
+}
+
+class _PostState extends State<Post> {
+  int pageViewActiveIndex = 0;
+
   int likeCount = -1;
 
-  // Post caption
   final String caption =
       '''Styling text in Flutter #something, Styling text in Flutter. #Another, #nepal, Styling text in Flutter. #ktm, #love, #newExperiance Styling text in Flutter. Styling text in Flutter. Styling text in Flutter.''';
-
-  Post(this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +62,6 @@ class Post extends StatelessWidget {
     );
   }
 
-  // User profile, name and more option
   Widget userInfoRow() => Row(
         children: <Widget>[
           CircleImage(
@@ -74,10 +79,9 @@ class Post extends StatelessWidget {
         ],
       );
 
-  // Single or collection of images/videos
   Widget gallery() => Container(
         constraints: BoxConstraints(
-          maxHeight: 400.0, // changed to 400
+          maxHeight: 500.0, // changed to 400
           minHeight: 200.0, // changed to 200
           maxWidth: double.infinity,
           minWidth: double.infinity,
@@ -91,28 +95,82 @@ class Post extends StatelessWidget {
             ),
           ),
         ),
-        child: Image.asset(UIImageData.storiesList[index]),
+        // child: Image.asset(
+        //   UIImageData.storiesList[index],
+        //   fit: BoxFit.contain,
+        // ),
+        child: widget.galleryItems.length > 1
+            ? galleryPageView()
+            : Image.asset(
+                UIImageData.storiesList[widget.index],
+                fit: BoxFit.contain,
+              ),
       );
 
-  // Different icon buttons and image slider indicator
-  Widget actions() => Row(
+  Widget galleryPageView() {
+    return PageView.builder(
+      itemCount: widget.galleryItems.length,
+      onPageChanged: (currentIndex) {
+        setState(() {
+          this.pageViewActiveIndex = currentIndex;
+        });
+        print('Current index $currentIndex : index : ${widget.index}');
+      },
+      itemBuilder: (BuildContext context, int index) {
+        return Image.asset(
+          widget.galleryItems[index],
+          fit: BoxFit.cover,
+        );
+      },
+    );
+  }
+
+  Widget actions() => Stack(
+        alignment: Alignment.center,
         children: <Widget>[
-          SizedBox(width: 12.0), // For padding
-          Icon(CustomIcons.like_lineal),
-          SizedBox(width: 16.0), // For padding
-          Icon(CustomIcons.comment),
-          SizedBox(width: 16.0), // For padding
-          Transform.rotate(
-            angle: 0.4,
-            child: Icon(CustomIcons.paper_plane),
+          // Slider indicator
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ...widget.galleryItems.map((s) {
+                  return Container(
+                    margin: EdgeInsets.only(right: 4.0),
+                    height: widget.galleryItems.length <= 1 ? 0.0 : 6.0,
+                    width: widget.galleryItems.length <= 1 ? 0.0 : 6.0,
+                    decoration: BoxDecoration(
+                      color:
+                          pageViewActiveIndex == widget.galleryItems.indexOf(s)
+                              ? Colors.blueAccent
+                              : Colors.grey[300],
+                      shape: BoxShape.circle,
+                    ),
+                  );
+                }),
+              ],
+            ),
           ),
-          Expanded(child: SizedBox()),
-          Icon(CustomIcons.bookmark_lineal),
-          SizedBox(width: 10.0), // For padding
+
+          // Actions buttons/icons
+          Row(
+            children: <Widget>[
+              SizedBox(width: 12.0), // For padding
+              Icon(CustomIcons.like_lineal),
+              SizedBox(width: 16.0), // For padding
+              Icon(CustomIcons.comment),
+              SizedBox(width: 16.0), // For padding
+              Transform.rotate(
+                angle: 0.4,
+                child: Icon(CustomIcons.paper_plane),
+              ),
+              Expanded(child: SizedBox()),
+              Icon(CustomIcons.bookmark_lineal),
+              SizedBox(width: 10.0), // For padding
+            ],
+          ),
         ],
       );
 
-  // People liked information with icon
   Widget likeCounts() => Row(
         children: <Widget>[
           SizedBox(width: 12.0), // For padding
@@ -182,7 +240,6 @@ class Post extends StatelessWidget {
         ],
       );
 
-  //Caption
   Widget galleryCaption() => Padding(
         padding: const EdgeInsets.only(left: 12.0, right: 16),
         child: RichText(
@@ -208,7 +265,6 @@ class Post extends StatelessWidget {
         ),
       );
 
-  // View all comments
   Widget comments() => Padding(
         padding: const EdgeInsets.only(left: 12.0),
         child: Text(
@@ -217,7 +273,6 @@ class Post extends StatelessWidget {
         ),
       );
 
-  // Add comment section
   Widget addComment() => Row(
         children: <Widget>[
           CircleImage(
@@ -250,7 +305,6 @@ class Post extends StatelessWidget {
         ],
       );
 
-  // Uploaded time
   Widget uploadedTime() => Padding(
         padding: const EdgeInsets.only(left: 12.0),
         child: Text(
@@ -259,7 +313,6 @@ class Post extends StatelessWidget {
         ),
       );
 
-  // Function which will colour all hash tag items from the caption
   List<TextSpan> _processCaption(
       String caption, String matcher, TextStyle style) {
     List<TextSpan> spans = [];
@@ -273,5 +326,9 @@ class Post extends StatelessWidget {
     });
 
     return spans;
+  }
+
+  List<Widget> sliderIndicator(int totalItem, int currentItem) {
+    return null;
   }
 }

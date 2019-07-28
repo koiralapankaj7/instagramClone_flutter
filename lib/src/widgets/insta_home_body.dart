@@ -14,12 +14,15 @@ class _InstaHomeBodyState extends State<InstaHomeBody> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       child: ListView.builder(
-        itemCount: UIImageData.storiesList.length,
+        itemCount: UIImageData.postList.length + 1,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Story(); // story.dart from widgets package
           } else {
-            return Post(index); // post.dart from widgets package
+            return Post(
+                index - 1,
+                UIImageData
+                    .postList[index - 1]); // post.dart from widgets package
           }
         },
       ),

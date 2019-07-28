@@ -36,11 +36,71 @@ class UIImageData {
   static const String model4 = '$imageDir/model4.jpg';
   static const String model5 = '$imageDir/model5.jpg';
 
+  // DIFFERENT POST. Single post can contain list of images/videos
+  static const List<String> post1 = [model1];
+  static const List<String> post2 = [model1, model2];
+  static const List<String> post3 = [
+    child,
+    model2,
+    man,
+    model,
+    child1,
+    man1,
+    child2,
+    model4,
+    man2,
+    child3,
+    man3,
+    model5,
+    child4
+  ];
+  static const List<String> post4 = [man3];
+  static const List<String> post5 = [man, model, child1, man1, child2];
+  static const List<String> post6 = [man4];
+  static const List<String> post7 = [child1];
+  static const List<String> post8 = [child1];
+  static const List<String> post9 = [man2, child3, man3, model5, child4, man4];
+  static const List<String> post10 = [man2, man1, model3];
+  static const List<String> post11 = [model3];
+  static const List<String> post12 = [man];
+  static const List<String> post13 = [man3, model5, child4, man4];
+  static const List<String> post14 = [man1, child2, model4];
+  static const List<String> post15 = [model1];
+  static const List<String> post16 = [model5, child4];
+  static const List<String> post17 = [model2, man, model];
+  static const List<String> post18 = [model5];
+  static const List<String> post19 = [man1];
+  static const List<String> post20 = [man2];
+
+  // TOTAL POST. Total posts should be list
+  static const List<List<String>> postList = [
+    post1,
+    post2,
+    post3,
+    post4,
+    post5,
+    post6,
+    post7,
+    post8,
+    post9,
+    post10,
+    post11,
+    post12,
+    post13,
+    post14,
+    post15,
+    post16,
+    post17,
+    post18,
+    post19,
+    post20
+  ];
+
   static const List<String> storiesList = [
     model3,
     model1,
-    model2,
     child,
+    model2,
     man,
     model,
     child1,

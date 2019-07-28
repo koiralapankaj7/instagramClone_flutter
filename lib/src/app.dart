@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/src/screens/home_screen.dart';
+import 'package:insta_clone/src/screens/insta_home.dart';
 
 class App extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class App extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       // onGenerateRoute: appRoutes.routes,
-      home: HomeScreen(),
+      home: InstaHome(),
     );
   }
 }

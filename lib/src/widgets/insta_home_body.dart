@@ -3,12 +3,12 @@ import 'package:insta_clone/src/utils/ui_image_data.dart';
 import 'package:insta_clone/src/widgets/post.dart';
 import 'package:insta_clone/src/widgets/story.dart';
 
-class HomeBody extends StatefulWidget {
+class InstaHomeBody extends StatefulWidget {
   @override
-  _HomeBodyState createState() => _HomeBodyState();
+  _InstaHomeBodyState createState() => _InstaHomeBodyState();
 }
 
-class _HomeBodyState extends State<HomeBody> {
+class _InstaHomeBodyState extends State<InstaHomeBody> {
   // Build function
   @override
   Widget build(BuildContext context) {

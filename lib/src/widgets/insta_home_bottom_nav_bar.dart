@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/src/customIcons/custom_icons.dart';
 
-class BottomNavBar extends StatefulWidget {
+class InstaHomeBottomNavBar extends StatefulWidget {
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  _InstaHomeBottomNavBarState createState() => _InstaHomeBottomNavBarState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _InstaHomeBottomNavBarState extends State<InstaHomeBottomNavBar> {
   // Current active index of bottom navigation bar
   int currentIndex = 0;
 

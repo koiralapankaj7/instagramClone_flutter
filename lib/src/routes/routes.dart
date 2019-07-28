@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/src/screens/home_screen.dart';
+import 'package:insta_clone/src/screens/insta_home.dart';
 
 class AppRoutes {
   Route routes(RouteSettings settings) {
@@ -15,7 +15,7 @@ class AppRoutes {
 
   MaterialPageRoute openHomeScreen(RouteSettings settings) {
     return MaterialPageRoute(builder: (BuildContext context) {
-      return HomeScreen();
+      return InstaHome();
     });
   }
 }

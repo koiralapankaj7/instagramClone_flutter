@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/src/utils/ui_image_data.dart';
+import 'package:insta_clone/src/widgets/friend_suggestion.dart';
 import 'package:insta_clone/src/widgets/post.dart';
 import 'package:insta_clone/src/widgets/story.dart';
 
@@ -14,10 +15,12 @@ class _InstaHomeBodyState extends State<InstaHomeBody> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       child: ListView.builder(
-        itemCount: UIImageData.postList.length + 1,
+        itemCount: UIImageData.postList.length + 2,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Story(); // story.dart from widgets package
+          } else if (index == 1) {
+            return FriendSuggestion();
           } else {
             return Post(
                 index - 1,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/src/utils/ui_image_data.dart';
 import 'package:insta_clone/src/widgets/circle_image.dart';
 
-class Stories extends StatelessWidget {
+class Story extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +37,7 @@ class Stories extends StatelessWidget {
         Expanded(
           child: Text(
             index == 0 ? 'Your Story' : UIImageData.storiesName[index],
-            style: TextStyle(color: Colors.black54),
+            style: TextStyle(color: Colors.black),
           ),
         ),
       ],

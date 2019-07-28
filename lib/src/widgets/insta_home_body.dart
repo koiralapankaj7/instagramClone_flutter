@@ -19,7 +19,7 @@ class _InstaHomeBodyState extends State<InstaHomeBody> {
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Story(); // story.dart from widgets package
-          } else if (index == 1) {
+          } else if (index == 2) {
             return FriendSuggestion();
           } else {
             return Post(

@@ -42,10 +42,12 @@ class InstaSearch extends StatelessWidget {
 
             //
             SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                //crossAxisCount: 3,
                 mainAxisSpacing: 2.0,
                 crossAxisSpacing: 2.0,
+                childAspectRatio: 1.0,
+                maxCrossAxisExtent: 150.0,
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {

@@ -30,7 +30,7 @@ class _InstaHomeState extends State<InstaHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: _widgetOptions[1],
+      body: _widgetOptions[currentIndex],
       bottomNavigationBar: bottomNavBar(),
     );
   }

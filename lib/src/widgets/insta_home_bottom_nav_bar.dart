@@ -10,6 +10,8 @@ class _InstaHomeBottomNavBarState extends State<InstaHomeBottomNavBar> {
   // Current active index of bottom navigation bar
   int currentIndex = 0;
 
+  // currentIndex == 1 ? true : false;
+
   @override
   Widget build(BuildContext context) {
     final List<BottomNavigationBarItem> items = [
@@ -54,14 +56,15 @@ class _InstaHomeBottomNavBarState extends State<InstaHomeBottomNavBar> {
 
     return BottomNavigationBar(
       items: items,
-      onTap: (index) {
+      onTap: (int index) {
         setState(() {
           currentIndex = index;
         });
       },
-      currentIndex: currentIndex,
+
+      currentIndex: currentIndex, // to do
       iconSize: 24.0,
-      showSelectedLabels: false,
+      // showSelectedLabels: false,
       // fixedColor: Colors.black,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.black,

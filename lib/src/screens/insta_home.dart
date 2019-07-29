@@ -50,6 +50,7 @@ class _InstaHomeState extends State<InstaHome> {
 
   // Widgets in the right side of the applications i.e, igtv and send icon in this application
   List<Widget> actions() => <Widget>[
+        // First item
         Stack(
           children: <Widget>[
             // IGTV button
@@ -68,8 +69,8 @@ class _InstaHomeState extends State<InstaHome> {
 
             // Red dot notification
             Positioned(
-              top: 15.0,
-              right: 9.0,
+              top: 15.0, //15
+              right: 9.0, //9.0
               child: Container(
                 height: 10.0,
                 width: 10.0,
@@ -82,9 +83,10 @@ class _InstaHomeState extends State<InstaHome> {
           ],
         ),
 
+        // Second item
         // SEND button
         Transform.rotate(
-          angle: 0.4,
+          angle: 0.4, //0.4
           child: IconButton(
             icon: Icon(
               CustomIcons.paper_plane,

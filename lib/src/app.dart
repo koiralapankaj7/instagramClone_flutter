@@ -10,7 +10,7 @@ class App extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       // onGenerateRoute: appRoutes.routes,
-      home: InstaHome(),
+      home: InstaHome(), // insta_home.dart from screens package
     );
   }
 }

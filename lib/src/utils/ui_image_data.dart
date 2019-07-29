@@ -37,8 +37,8 @@ class UIImageData {
   static const String model5 = '$imageDir/model5.jpg';
 
   // DIFFERENT POST. Single post can contain list of images/videos
-  static const List<String> post1 = [model1];
-  static const List<String> post2 = [model1, model2];
+  static const List<String> post1 = [man2];
+  static const List<String> post2 = [man3, model2];
   static const List<String> post3 = [
     child,
     model2,
@@ -54,7 +54,7 @@ class UIImageData {
     model5,
     child4
   ];
-  static const List<String> post4 = [man3];
+  static const List<String> post4 = [man2];
   static const List<String> post5 = [man, model, child1, man1, child2];
   static const List<String> post6 = [man4];
   static const List<String> post7 = [child1];
@@ -73,7 +73,7 @@ class UIImageData {
   static const List<String> post20 = [man2];
 
   // TOTAL POST. Total posts should be list
-  static const List<List<String>> postList = [
+  static List<List<String>> postList = [
     post1,
     post2,
     post3,

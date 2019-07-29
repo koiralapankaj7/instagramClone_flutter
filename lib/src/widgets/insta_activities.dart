@@ -5,18 +5,22 @@ import 'package:insta_clone/src/widgets/friend_suggestion.dart';
 import 'package:insta_clone/src/widgets/post.dart';
 import 'package:insta_clone/src/widgets/story.dart';
 
-class InstaHomeBody extends StatefulWidget {
-  var listContent = UIImageData.postList;
-  InstaHomeBody() {
+class InstaActivities extends StatefulWidget {
+  //
+  // List of posts
+  List<List<String>> listContent = UIImageData.postList;
+  InstaActivities() {
+    // Adding two empty list to postList in first and third index
+    // We are doping this to place stories widget in first index and suggested for you widget in second index
     listContent.insert(0, []);
     listContent.insert(2, []);
   }
 
   @override
-  _InstaHomeBodyState createState() => _InstaHomeBodyState();
+  _InstaActivitiesState createState() => _InstaActivitiesState();
 }
 
-class _InstaHomeBodyState extends State<InstaHomeBody> {
+class _InstaActivitiesState extends State<InstaActivities> {
   // Build function
   @override
   Widget build(BuildContext context) {

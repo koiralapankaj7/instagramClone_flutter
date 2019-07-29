@@ -4,7 +4,7 @@ import 'package:insta_clone/src/screens/insta_favourite.dart';
 import 'package:insta_clone/src/screens/insta_gallery.dart';
 import 'package:insta_clone/src/screens/insta_profile.dart';
 import 'package:insta_clone/src/screens/insta_search.dart';
-import 'package:insta_clone/src/widgets/insta_home_body.dart';
+import 'package:insta_clone/src/widgets/insta_activities.dart';
 
 class InstaHome extends StatefulWidget {
   @override
@@ -12,13 +12,13 @@ class InstaHome extends StatefulWidget {
 }
 
 class _InstaHomeState extends State<InstaHome> {
+  //
   // Current active index of bottom navigation bar
   int currentIndex = 0;
 
-  // currentIndex == 1 ? true : false;
-
+  // Widgets that need to be rendered when bottom nav bar icon clicked
   List<Widget> _widgetOptions = <Widget>[
-    InstaHomeBody(),
+    InstaActivities(),
     InstaSearch(),
     InstaGallery(),
     InstaFavourite(),
@@ -30,12 +30,6 @@ class _InstaHomeState extends State<InstaHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   leading: leading(),
-      //   title: title(),
-      //   titleSpacing: 8.0, // Spacing for title
-      //   actions: actions(),
-      // ),
       body: _widgetOptions[currentIndex],
       bottomNavigationBar: bottomNavBar(),
     );

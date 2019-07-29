@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/src/customIcons/custom_icons.dart';
+import 'package:insta_clone/src/screens/insta_favourite.dart';
+import 'package:insta_clone/src/screens/insta_gallery.dart';
+import 'package:insta_clone/src/screens/insta_home.dart';
+import 'package:insta_clone/src/screens/insta_profile.dart';
+import 'package:insta_clone/src/screens/insta_search.dart';
 
 class InstaHomeBottomNavBar extends StatefulWidget {
   @override
@@ -11,6 +16,14 @@ class _InstaHomeBottomNavBarState extends State<InstaHomeBottomNavBar> {
   int currentIndex = 0;
 
   // currentIndex == 1 ? true : false;
+
+  List<Widget> _widgetOptions = <Widget>[
+    InstaHome(),
+    InstaSearch(),
+    InstaGallery(),
+    InstaFavourite(),
+    InstaProfile(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +74,6 @@ class _InstaHomeBottomNavBarState extends State<InstaHomeBottomNavBar> {
           currentIndex = index;
         });
       },
-
       currentIndex: currentIndex, // to do
       iconSize: 24.0,
       // showSelectedLabels: false,

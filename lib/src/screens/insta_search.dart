@@ -92,7 +92,7 @@ class GalleryStaggeredGridView extends StatelessWidget {
             // ),
           ),
           child: Image.asset(
-            images[index],
+            UIImageData.man2,
             fit: BoxFit.cover,
             frameBuilder: (BuildContext context, Widget child, int frame,
                 bool wasSynchronouslyLoaded) {

@@ -18,7 +18,7 @@ class _InstaHomeState extends State<InstaHome> {
 
   // Widgets that need to be rendered when bottom nav bar icon clicked
   List<Widget> _widgetOptions = <Widget>[
-    InstaActivities(),
+    InstaActivities(), // insta_activities.dart inside widgets folder
     InstaSearch(),
     InstaGallery(),
     InstaFavourite(),
@@ -35,80 +35,7 @@ class _InstaHomeState extends State<InstaHome> {
     );
   }
 
-  // Leading widget in app bar i.e, camera icon in this application
-  Widget leading() => IconButton(
-        icon: Icon(
-          CustomIcons.photo_camera,
-          size: 32.0,
-          color: Colors.black,
-        ),
-        onPressed: () {},
-      );
-
-  // Title of the app bar i.e, Instagram in this application
-  Widget title() => Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Text(
-          'Instagram',
-          style: TextStyle(
-            fontFamily: 'Billabong',
-            fontSize: 32.0,
-          ),
-        ),
-      );
-
-  // Widgets in the right side of the applications i.e, igtv and send icon in this application
-  List<Widget> actions() => <Widget>[
-        // First item
-        Stack(
-          children: <Widget>[
-            // IGTV button
-            IconButton(
-              // icon: SvgPicture.asset(
-              //   UIImageData.igtv,
-              //   color: Colors.black,
-              // ),
-              icon: Icon(
-                CustomIcons.igtv,
-                size: 28.0,
-                color: Colors.black,
-              ),
-              onPressed: () {},
-            ),
-
-            // Red dot notification
-            Positioned(
-              top: 15.0, //15
-              right: 9.0, //9.0
-              child: Container(
-                height: 10.0,
-                width: 10.0,
-                decoration: BoxDecoration(
-                  color: Colors.redAccent,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
-        ),
-
-        // Second item
-        // SEND button
-        Transform.rotate(
-          angle: 0.4, //0.4
-          child: IconButton(
-            icon: Icon(
-              CustomIcons.paper_plane,
-              size: 28.0,
-              color: Colors.black,
-            ),
-            onPressed: () {},
-          ),
-        ),
-
-        // For padding
-        SizedBox(width: 12.0),
-      ];
+  // a == 1 ? true : false;
 
   Widget bottomNavBar() {
     final List<BottomNavigationBarItem> items = [

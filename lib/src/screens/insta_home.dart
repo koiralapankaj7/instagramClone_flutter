@@ -14,7 +14,7 @@ class InstaHome extends StatefulWidget {
 class _InstaHomeState extends State<InstaHome> {
   //
   // Current active index of bottom navigation bar
-  int currentIndex = 4;
+  int currentIndex = 3;
 
   // Widgets that need to be rendered when bottom nav bar icon clicked
   List<Widget> _widgetOptions = <Widget>[

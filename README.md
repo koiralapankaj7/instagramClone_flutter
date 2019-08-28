@@ -1,6 +1,6 @@
 # insta_clone
 
-A new Flutter project.
+This project is developed for students who want to learn flutter. Due to lack of time i couldn't build complete clone. I will try to complete this project in upcoming days using cool stuffs like Provider, Bloc, RxDart etc. as well. Anybody who want to contribute is must wellcome. 
 
 ## Getting Started
 

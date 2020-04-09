@@ -7,11 +7,14 @@ This project is developed for students who want to learn flutter. Due to lack of
     <td><img src="/assets/project/insta.gif" width="300" height="600"></td>
     <td><img src="/assets/project/home.jpg" width="300" height="600"></td>
     <td><img src="/assets/project/home1.jpg" width="300" height="600"></td>
+  </tr>
+  <tr>
     <td><img src="/assets/project/search.jpg" width="300" height="600"></td>
     <td><img src="/assets/project/profile.jpg" width="300" height="600"></td>
     <td><img src="/assets/project/profile1.jpg" width="300" height="600"></td>
   </tr>
  </table>
+
  
 
 ## Getting Started

@@ -11,17 +11,12 @@ A few resources to get you started if this is your first Flutter project:
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-<video width="300" height="600" controls>
-  <source src="/assets/project/insta.mp4" type="video/mp4">
-</video>
-
+<img src="/assets/project/insta.gif" width="300" height="600">
 <img src="/assets/project/home.jpg" width="300" height="600">
 <img src="/assets/project/home1.jpg" width="300" height="600">
 <img src="/assets/project/search.jpg" width="300" height="600">
 <img src="/assets/project/profile.jpg" width="300" height="600">
 <img src="/assets/project/profile1.jpg" width="300" height="600">
-
-![Video](/assets/project/insta.mp4)
 
 <!-- ![Home](/assets/project/home.jpg)
 ![Search](/assets/project/search.jpg)

@@ -557,6 +557,7 @@ class _PostState extends State<Post> {
               InkWell(
                 onTap: () {
                   Navigator.pop(context);
+                  _showMuteDialog();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(12),
@@ -570,6 +571,92 @@ class _PostState extends State<Post> {
                 ),
               ),
             ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showMuteDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: AlertDialog(
+            contentPadding: EdgeInsets.all(0),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  child: Text(
+                    "Mute _mark_official_?",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 20, left: 24, right: 24),
+                  child: Text(
+                    "You can unmute them from their profile. Instagram won't let them know that you've muted them.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Mute posts",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey, width: 0.2))),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Mute posts and story",
+                      style: TextStyle(fontSize: 14, color: Colors.red),
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey, width: 0.2))),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey, width: 0.2))),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

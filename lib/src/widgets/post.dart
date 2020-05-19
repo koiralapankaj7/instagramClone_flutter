@@ -328,6 +328,162 @@ class _PostState extends State<Post> {
     return null;
   }
 
+  void _showReportSheet() {
+    bool submitted = false;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setModalState) {
+          return DraggableScrollableSheet(
+              maxChildSize: 0.95,
+              builder: (context, scrollController) {
+                return Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(14))),
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: !submitted
+                          ? Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 14),
+                                  child: Container(
+                                    height: 4,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.shade500,
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                  ),
+                                ),
+                                Text(
+                                  "Report",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Divider(),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    child: Text(
+                                      "Why are you reporting this post?",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                ),
+                                Material(
+                                  type: MaterialType.transparency,
+                                  child: InkWell(
+                                    onTap: () {
+                                      setModalState(() {
+                                        submitted = true;
+                                      });
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 20),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "It's spam",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Material(
+                                  type: MaterialType.transparency,
+                                  child: InkWell(
+                                    onTap: () {
+                                      setModalState(() {
+                                        submitted = true;
+                                      });
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 20),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "It's inappropriate",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(top: 14, bottom: 20),
+                                  child: Container(
+                                    height: 4,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.shade500,
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                  ),
+                                ),
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: Icon(
+                                      Icons.done,
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          color: Colors.green, width: 2)),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 14),
+                                  child: Text(
+                                    "Thanks for letting us know",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Text(
+                                    "Your feedback is important in helping us keep the instagram community safe.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        height: 1.3,
+                                        fontSize: 14,
+                                        color: Colors.grey),
+                                  ),
+                                ),
+                              ],
+                            ),
+                    ));
+              });
+        });
+      },
+    );
+  }
+
   void _showMoreDialog() {
     showDialog(
       context: context,
@@ -340,6 +496,7 @@ class _PostState extends State<Post> {
               InkWell(
                 onTap: () {
                   Navigator.pop(context);
+                  _showReportSheet();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(12),

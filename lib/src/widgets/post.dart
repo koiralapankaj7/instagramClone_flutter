@@ -72,9 +72,7 @@ class _PostState extends State<Post> {
           Text('_mark_official_'),
           Expanded(child: SizedBox()),
           IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
+              icon: Icon(Icons.more_vert), onPressed: () => _showMoreDialog()),
         ],
       );
 
@@ -328,5 +326,340 @@ class _PostState extends State<Post> {
 
   List<Widget> sliderIndicator(int totalItem, int currentItem) {
     return null;
+  }
+
+  void _showReportSheet() {
+    bool submitted = false;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setModalState) {
+          return DraggableScrollableSheet(
+              maxChildSize: 0.95,
+              builder: (context, scrollController) {
+                return Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(14))),
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: !submitted
+                          ? Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 14),
+                                  child: Container(
+                                    height: 4,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.shade500,
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                  ),
+                                ),
+                                Text(
+                                  "Report",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Divider(),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    child: Text(
+                                      "Why are you reporting this post?",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                ),
+                                Material(
+                                  type: MaterialType.transparency,
+                                  child: InkWell(
+                                    onTap: () {
+                                      setModalState(() {
+                                        submitted = true;
+                                      });
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 20),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "It's spam",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Material(
+                                  type: MaterialType.transparency,
+                                  child: InkWell(
+                                    onTap: () {
+                                      setModalState(() {
+                                        submitted = true;
+                                      });
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12, horizontal: 20),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "It's inappropriate",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(top: 14, bottom: 20),
+                                  child: Container(
+                                    height: 4,
+                                    width: 45,
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey.shade500,
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                  ),
+                                ),
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: Icon(
+                                      Icons.done,
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          color: Colors.green, width: 2)),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 14),
+                                  child: Text(
+                                    "Thanks for letting us know",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Text(
+                                    "Your feedback is important in helping us keep the instagram community safe.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        height: 1.3,
+                                        fontSize: 14,
+                                        color: Colors.grey),
+                                  ),
+                                ),
+                              ],
+                            ),
+                    ));
+              });
+        });
+      },
+    );
+  }
+
+  void _showMoreDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.all(0),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                  _showReportSheet();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Report...",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Turn on Post Notifications",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Copy link",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Share to...",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                  _showMuteDialog();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Mute",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showMuteDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: AlertDialog(
+            contentPadding: EdgeInsets.all(0),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  child: Text(
+                    "Mute _mark_official_?",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 20, left: 24, right: 24),
+                  child: Text(
+                    "You can unmute them from their profile. Instagram won't let them know that you've muted them.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Mute posts",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey, width: 0.2))),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Mute posts and story",
+                      style: TextStyle(fontSize: 14, color: Colors.red),
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey, width: 0.2))),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(color: Colors.grey, width: 0.2))),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
